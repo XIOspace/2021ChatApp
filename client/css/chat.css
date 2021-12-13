@@ -1,0 +1,22 @@
+#chat_title{
+    margin-top:40px
+}
+#chat-room{
+    height: 600px;
+    border: 1px solid;
+    margin-top:40px;
+    margin-bottom:40px;
+}
+#user-list{
+    margin-top: 15px;
+    margin-left:0px;
+    border: solid 1px greenyellow;
+}
+#ctn-msg{
+    border-bottom:solid 1px orange;
+    margin-top: 15px;
+}
+#ctn-msg-user{
+    color: green;
+    font-weight:bold;
+}

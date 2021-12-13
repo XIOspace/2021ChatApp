@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <title>Socket.IO chat</title> -->
+    <title>聊天室</title>
+    <meta charset="utf-8">
+    <link href="css/chat.css" rel="stylesheet" type ="text/css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <style>
+      /* body { margin: 0; padding-bottom: 3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+
+      #form { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: fixed; bottom: 0; left: 0; right: 0; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); }
+      #input { border: none; padding: 0 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem; }
+      #input:focus { outline: none; }
+      #form > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
+
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages > li { padding: 0.5rem 1rem; }
+      #messages > li:nth-child(odd) { background: #efefef; } */
+    </style>
+  </head>
+  <body>
+
+    <div id="app">
+      <div class="text-center" id="chat_title">
+        <h4>聊天室</h4>
+      </div>
+      <div class="chat-room container" id="chat-room">
+        <div class="row">
+          <div class="col-lg-3 col-md-3">
+            <div class="list-group" id="user-list" v-for="user in userList">
+              <li class="list-group-item">{{user.name}}</li>
+            </div>
+          </div>
+          <div class=" col-lg-9 col-md-9">
+            <div id="ctn-msg" v-for="msg in msgList">
+              <p id="ctn-msg-user">{{msg.nane}}</p>
+              <p id="ctn-msg-text">{{msg.ctn}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=" container">
+        <div class="row justify-content-center">
+          <div class="align-self-center" id="msg_textbox_title">
+            <h5>傳送訊息 : </h5>
+          </div>
+          <div class="col-6" id="msg_textbox_box">
+            <input class="form-control" type="text" v-model="sendMsg">
+          </div>
+          <div  class="col-2" id="msg_textbox_but">
+            <button type="button" class="btn btn-primary" @click="sentChat()">傳送</button>
+          </div>
+        </div>
+      </div>
+<br/>
+      <!-- <div class=" container">
+        <div class="row justify-content-center">
+          <div class="align-self-center">
+            <h5>帳號 : </h5>
+          </div>
+          <div class="col-8">
+            <input class="form-control" type="text" v-model="username">
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="align-self-center">
+            <h5>密碼 : </h5>
+          </div>
+          <div class="col-8">
+            <input class="form-control" type="password" v-model="userpassword">
+          </div>
+        </div>
+        <br/>
+        <div class="row justify-content-around">
+          <div  class="" id="msg_textbox_but">
+            <button type="button" class="btn btn-primary" @click="sentChat()">註冊</button>
+          </div>
+          <div  class="" id="msg_textbox_but">
+            <button type="button" class="btn btn-primary" @click="sentChat()">登入</button>
+          </div>
+        </div>
+      </div> -->
+      <div class="container" v-show="islogin">
+
+        <h4>登录:</h4>
+
+        <label>用户名</label><br />
+        <input type="text" v-model="userName" class="form-control" />
+        <label>密码</label><br />
+        <input type="password" v-model="userPasswd" class="form-control" />
+
+        <button class="btn btn-primary" style="margin-top:20px;" @click="startLogin()">登录</button>
+
+      </div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
+
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.2"></script> -->
+    
+    
+    <!-- <script src="./js/chat.js"></script> -->
+    <script src="./socket.io.js"></script>
+    <script src="./js/chat1.js"></script>
+    <!-- <ul id="messages"></ul>
+    <form id="form" action="">
+      <input id="input" autocomplete="off" /><button>Send</button>
+    </form> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script> -->
+            
+
+  </body>
+</html>
